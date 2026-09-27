@@ -4718,6 +4718,12 @@ span.rank-owner-hint {
                     createdAt: new Date().toISOString()
                 };
                 policeJoinRequests.push(req);
+
+if (window.db) {
+    addDoc(collection(window.db, "policeJoinRequests"), req)
+    .then(() => console.log("Request saved to Firebase"))
+    .catch(err => console.error("Firebase save error:", err));
+}
                 try { localStorage.setItem('lspd_pending_police', JSON.stringify({ copyId, name })); localStorage.setItem('lspd_police_request_status_' + String(copyId), JSON.stringify({status:'pending',name,copyId,at:req.createdAt})); } catch(e){}
                 logAction('طلب انضمام شرطة', `طلب من ${name} (ID: ${copyId})`, 'guest', 'guest');
                 closePoliceLoginModal();
@@ -7218,7 +7224,7 @@ header{position:relative!important;z-index:30!important;min-height:82px!importan
   <!-- Firebase Connection -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
