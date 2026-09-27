@@ -1896,8 +1896,12 @@ span.rank-owner-hint {
         const GOOGLE_CLIENT_ID = "YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com";
 
         // نظام الصلاحيات
-        let currentRole = 'guest';
-        let currentUserEmail = '';
+       let currentRole = 'guest';
+let currentUserEmail = '';
+
+if (currentUserEmail === OWNER_EMAIL) {
+    currentRole = 'owner';
+}
         // يبدأ الموقع كزائر؛ لا تُمنح صلاحية المالك إلا بعد تحقق البريد وتطابقه مع OWNER_EMAIL
         let googleCredential = null;
         let pendingRequests = [];
