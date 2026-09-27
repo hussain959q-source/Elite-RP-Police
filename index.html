@@ -7215,9 +7215,29 @@ header{position:relative!important;z-index:30!important;min-height:82px!importan
 })();
 </script>
 <script id="preview-loader-failsafe">(function(){function hideLoader(){var x=document.getElementById('lspd-loader');if(x){x.classList.add('hide');x.style.setProperty('display','none','important')}}window.addEventListener('load',function(){setTimeout(hideLoader,900)});document.addEventListener('DOMContentLoaded',function(){setTimeout(hideLoader,1800)});setTimeout(hideLoader,3200)})();</script>
+  <!-- Firebase Connection -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyADGIaIQQHtSApNHqTl_j23IVTj7RMBNtI",
+  authDomain: "elite-rp5.firebaseapp.com",
+  projectId: "elite-rp5",
+  storageBucket: "elite-rp5.firebasestorage.app",
+  messagingSenderId: "759298004224",
+  appId: "1:759298004224:web:a4d12ec008199348688fe5",
+  measurementId: "G-MPTP63PQQJ"
+};
+
+const app = initializeApp(firebaseConfig);
+
+window.db = getFirestore(app);
+window.auth = getAuth(app);
+
+console.log("Firebase Connected");
+</script>
 </body>
 </html>
     
-  </body>
-  
-</html>
