@@ -6659,7 +6659,7 @@ header{position:relative!important;z-index:30!important;min-height:82px!importan
   function setupPoliceForm(){
     const name=document.getElementById('policeCharName'),copy=document.getElementById('policeCopyId');
     if(!name||!copy||name.dataset.finalPolicy)return;
-    name.dataset.finalPolicy='1';name.setAttribute('pattern',"[A-Za-z][A-Za-z '-]*");name.setAttribute('title','استخدم الحروف الإنجليزية والمسافات فقط');name.setAttribute('autocomplete','off');
+    name.dataset.finalPolicy='1';name.setAttribute('pattern','[A-Za-z\u0600-\u06FF\\s]*');name.setAttribute('title','استخدم الحروف الإنجليزية والمسافات فقط');name.setAttribute('autocomplete','off');
     copy.dataset.finalPolicy='1';copy.setAttribute('pattern','[0-9]+');copy.setAttribute('inputmode','numeric');copy.setAttribute('title','استخدم الأرقام فقط');copy.setAttribute('autocomplete','off');
     name.addEventListener('input',()=>{name.value=name.value.replace(/[^A-Za-z '\u002D]/g,'')});
     copy.addEventListener('input',()=>{copy.value=copy.value.replace(/[^0-9]/g,'')});
